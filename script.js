@@ -1,9 +1,14 @@
 // declaring Variables
 let initialNum = []; //first number typed in 
 let secondNum = []; //second number typed in
+let initialString;
+let secondString;
+let operatorSelect;
+let operatorSymbol;
 const operatorBtn = document.querySelectorAll(".operator-btn"); //the operator button selected
-const mainDisplay = document.querySelector(".main-display"); //container for the screen
 const numBtns = document.querySelectorAll(".number-btn"); //numbers and decimal buttons
+const topDisplay = document.querySelector(".top-display"); //the top screen with smaller text
+const mainDisplay = document.querySelector(".main-display"); //container for the main screen
 
 // basic operations
 const add = function (a, b) {
@@ -23,7 +28,7 @@ const divide = function (a, b) {
 };
 
 // operate function
-const operate = function (initialNum, secondNum, operator) {
+const operate = function (initialNum, secondNum, operatorSelect) {
      
 }
 
@@ -31,8 +36,28 @@ const operate = function (initialNum, secondNum, operator) {
 numBtns.forEach(button => {
     button.addEventListener('click', (event) => {
         initialNum.push(event.target.textContent)
-        let initialString = initialNum.join("");
+        initialString = initialNum.join("");
         mainDisplay.textContent = initialString;  
+    });
+});
+
+// selecting operator button
+operatorBtn.forEach(button => {
+    button.addEventListener('click', (event) => {
+        if (event.target.id === "div-btn") {
+            operatorSelect = "divide";
+            operatorSymbol = "/";
+        } else if (event.target.id === "mult-btn") {
+            operatorSelect = "multiply";
+            operatorSymbol = "*";
+        } else if (event.target.id === "sub-btn") {
+            operatorSelect = "subtract";
+            operatorSymbol = "-";
+        } else if (event.target.id === "add-btn") {
+            operatorSelect = "add";
+            operatorSymbol = "+";
+        }
+        mainDisplay.textContent = `${initialString} ${operatorSymbol}`
     });
 });
 
@@ -40,18 +65,8 @@ numBtns.forEach(button => {
 numBtns.forEach(button => {
     button.addEventListener('click', (event) => {
         secondNum.push(event.target.textContent)
-        let secondString = secondNum.join("");
-        mainDisplay.textContent = secondString;  
+        secondString = secondNum.join("");
+        mainDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
     });
 });
 
-// selecting operator button
-// operatorBtn.forEach(button => {
-//     button.addEventListener('click', (event) => {
-//         console.log(event.target.id)
-//         let operatorBtn = event.target.id;
-//         if {operatorBtn === "div-btn"} {
-//             let 
-//         }
-//     })
-// })
