@@ -35,9 +35,15 @@ const operate = function (initialNum, secondNum, operatorSelect) {
 // typing the first number
 numBtns.forEach(button => {
     button.addEventListener('click', (event) => {
-        initialNum.push(event.target.textContent)
-        initialString = initialNum.join("");
-        mainDisplay.textContent = initialString;  
+        if (operatorSymbol === " ") {
+            initialNum.push(event.target.textContent)
+            initialString = initialNum.join("");
+            mainDisplay.textContent = initialString;
+        } else if (operatorSymbol !== " ") {
+            secondNum.push(event.target.textContent)
+            secondString = secondNum.join("");
+            mainDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
+        }
     });
 });
 
@@ -61,12 +67,12 @@ operatorBtn.forEach(button => {
     });
 });
 
-// typing the second number
-numBtns.forEach(button => {
-    button.addEventListener('click', (event) => {
-        secondNum.push(event.target.textContent)
-        secondString = secondNum.join("");
-        mainDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
-    });
-});
+// // typing the second number
+// numBtns.forEach(button => {
+//     button.addEventListener('click', (event) => {
+//         secondNum.push(event.target.textContent)
+//         secondString = secondNum.join("");
+//         mainDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
+//     });
+// });
 
