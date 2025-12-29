@@ -5,6 +5,7 @@ let initialString;
 let secondString;
 let operatorSelect;
 let operatorSymbol;
+const equalBtn = document.getElementById("equal-btn"); //the equal button to run the functions
 const operatorBtn = document.querySelectorAll(".operator-btn"); //the operator button selected
 const numBtns = document.querySelectorAll(".number-btn"); //numbers and decimal buttons
 const topDisplay = document.querySelector(".top-display"); //the top screen with smaller text
@@ -27,19 +28,31 @@ const divide = function (a, b) {
     return a / b;
 };
 
-// operate function
-const operate = function (initialNum, secondNum, operatorSelect) {
-     
-}
+// do the actual math
+equalBtn.addEventListener('click', (event) => {
+    if (operatorSymbol === "/") {
+        mainDisplay.textContent = divide(initialString,secondString);
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
+    } else if (operatorSymbol === "*") {
+        mainDisplay.textContent = multiply(initialString,secondString);
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
+    } else if (operatorSymbol === "-") {
+        mainDisplay.textContent = subtract(initialString,secondString);
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
+    } else if (operatorSymbol === "+") {
+        mainDisplay.textContent = add(initialString,secondString);
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
+    }
+});
 
-// typing the first number
+// typing the numbers
 numBtns.forEach(button => {
     button.addEventListener('click', (event) => {
-        if (operatorSymbol === " ") {
+        if (operatorSymbol === undefined) {
             initialNum.push(event.target.textContent)
             initialString = initialNum.join("");
             mainDisplay.textContent = initialString;
-        } else if (operatorSymbol !== " ") {
+        } else if (operatorSymbol !== undefined) {
             secondNum.push(event.target.textContent)
             secondString = secondNum.join("");
             mainDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
@@ -67,12 +80,5 @@ operatorBtn.forEach(button => {
     });
 });
 
-// // typing the second number
-// numBtns.forEach(button => {
-//     button.addEventListener('click', (event) => {
-//         secondNum.push(event.target.textContent)
-//         secondString = secondNum.join("");
-//         mainDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
-//     });
-// });
+
 

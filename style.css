@@ -12,9 +12,7 @@ body {
 }
 
 /* MAIN CALC BODY */
-.displays {
-    background-color: hsl(160, 47%, 80%);
-}
+
 
 .calc-body {
     padding: 5px;
@@ -22,6 +20,16 @@ body {
     border-width: 1px;
     border-color: black;
     border-radius: 8px;
+}
+
+/* DISPLAYS */
+.displays {
+    background-color: hsl(160, 47%, 80%);
+    text-align: right;
+}
+
+.top-display {
+    font-size: small;
 }
 
 /* BUTTONS */
