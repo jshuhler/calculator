@@ -3,6 +3,7 @@ let initialNum = []; //first number typed in
 let secondNum = []; //second number typed in
 let initialString = 0;
 let secondString;
+let answer;
 let operatorSelect;
 let operatorSymbol;
 const equalBtn = document.getElementById("equal-btn"); //the equal button to run the functions
@@ -14,62 +15,73 @@ const mainDisplay = document.querySelector(".main-display"); //container for the
 
 // basic operations - could add toFixed(5) on here if I want to format the output
 const add = function (a, b) {
-    return (Number(a) + Number(b));
+    answer = (Number(a) + Number(b))
+    return answer;
 };
 
 const subtract = function (a, b) {
-    return (Number(a) - Number(b));
+    answer = (Number(a) - Number(b));
+    return answer;
 };
 
 const multiply = function (a, b) {
-    return (a * b);
+    answer = (a * b);
+    return answer;
 };
 
 const divide = function (a, b) {
-    return (a / b);
+    answer = (a / b);
+    return answer;
 };
 
 // typing the numbers
 numBtns.forEach(button => {
     button.addEventListener('click', (event) => {
         if (operatorSymbol === undefined) {
-            initialNum.push(event.target.textContent)
+            initialNum.push(event.target.textContent);
             initialString = initialNum.join("");
             mainDisplay.textContent = initialString;
-        // this part isn't working, but I might be on the right track?
-        // } else if (initialString !== undefined && secondString !== undefined && operatorSymbol !== undefined) {
-        //     initialString = operation (initialString, secondString, operatorSymbol);
         } else if (operatorSymbol !== undefined) {
-            secondNum.push(event.target.textContent)
+            secondNum.push(event.target.textContent);
             secondString = secondNum.join("");
             mainDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
-        }
+        }; 
     });
 });
 
 // selecting operator button
 operatorBtn.forEach(button => {
     button.addEventListener('click', (event) => {
-        if (initialString !== undefined && secondString !== undefined && operatorSymbol !== undefined) {
+        if (initialString !== undefined && secondString !== undefined && operatorSymbol !== undefined && answer === undefined) {
+            // subsequentOperator = event.target.id;
             operation(initialString, secondString, operatorSymbol);
-        } else if (event.target.id === "div-btn") {
-            operatorSelect = "divide";
+            initialString = answer;
+            initialNum = [];
+            secondNum = [];
+            secondString = undefined;
+            operatorSelect = undefined
+            operatorSymbol = undefined;
+            answer = undefined;
+        } else if (answer !== undefined) {
+            operation(initialString, secondString, operatorSymbol);
+        };
+        if (event.target.id === "div-btn") {
+            // operatorSelect = "divide";
             operatorSymbol = "/";
             mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         } else if (event.target.id === "mult-btn") {
-            operatorSelect = "multiply";
+            // operatorSelect = "multiply";
             operatorSymbol = "*";
             mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         } else if (event.target.id === "sub-btn") {
-            operatorSelect = "subtract";
+            // operatorSelect = "subtract";
             operatorSymbol = "-";
             mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         } else if (event.target.id === "add-btn") {
-            operatorSelect = "add";
+            // operatorSelect = "add";
             operatorSymbol = "+";
             mainDisplay.textContent = `${initialString} ${operatorSymbol}`
-        }
-        
+        };
     });
 });
 
@@ -91,9 +103,6 @@ operatorBtn.forEach(button => {
         }
     }
 // });
-
-// combining operator button and actual math - if the user enters initialNum, selects operator, enters secondNum, selects operator it should evaluate the function and push result to initialNum
-
 
 // clear button
 clearBtn.addEventListener('click', () => {
