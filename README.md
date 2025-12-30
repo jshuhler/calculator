@@ -32,3 +32,4 @@ Final project of [The Odin Project](https://www.theodinproject.com/about)'s Foun
     - dolch color scheme
     - space the buttons and body of the calculator
     - selected buttons depress and have styling on select
+    - on button hover, just make the button some % darker of the current color
