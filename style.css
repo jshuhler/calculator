@@ -95,6 +95,10 @@ button {
     width: 160px
 }
 
+.top-row {
+    margin-top: 15px;
+}
+
 .number-btn, .operator-btn {
     background-color: #b3b3b3;
     width: 80px;
@@ -118,6 +122,7 @@ a:hover {
 .footer {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: 15px 0px 15px 0px;
     color: rgb(29, 29, 29);
 }
