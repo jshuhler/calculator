@@ -1,49 +1,33 @@
 // declaring Variables
 let initialNum = []; //first number typed in 
 let secondNum = []; //second number typed in
-let initialString;
+let initialString = 0;
 let secondString;
 let operatorSelect;
 let operatorSymbol;
 const equalBtn = document.getElementById("equal-btn"); //the equal button to run the functions
+const clearBtn = document.getElementById("clear-btn")
 const operatorBtn = document.querySelectorAll(".operator-btn"); //the operator button selected
 const numBtns = document.querySelectorAll(".number-btn"); //numbers and decimal buttons
 const topDisplay = document.querySelector(".top-display"); //the top screen with smaller text
 const mainDisplay = document.querySelector(".main-display"); //container for the main screen
 
-// basic operations
+// basic operations - could add toFixed(5) on here if I want to format the output
 const add = function (a, b) {
-    return a + b;
+    return (Number(a) + Number(b));
 };
 
 const subtract = function (a, b) {
-    return a - b;
+    return (Number(a) - Number(b));
 };
 
 const multiply = function (a, b) {
-    return a * b;
+    return (a * b);
 };
 
 const divide = function (a, b) {
-    return a / b;
+    return (a / b);
 };
-
-// do the actual math
-equalBtn.addEventListener('click', (event) => {
-    if (operatorSymbol === "/") {
-        mainDisplay.textContent = divide(initialString,secondString);
-        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
-    } else if (operatorSymbol === "*") {
-        mainDisplay.textContent = multiply(initialString,secondString);
-        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
-    } else if (operatorSymbol === "-") {
-        mainDisplay.textContent = subtract(initialString,secondString);
-        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
-    } else if (operatorSymbol === "+") {
-        mainDisplay.textContent = add(initialString,secondString);
-        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
-    }
-});
 
 // typing the numbers
 numBtns.forEach(button => {
@@ -80,5 +64,31 @@ operatorBtn.forEach(button => {
     });
 });
 
+// do the actual math
+equalBtn.addEventListener('click', () => {
+    if (operatorSymbol === "/") {
+        mainDisplay.textContent = divide(initialString,secondString).toFixed(5);
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+    } else if (operatorSymbol === "*") {
+        mainDisplay.textContent = multiply(initialString,secondString).toFixed(5);
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+    } else if (operatorSymbol === "-") {
+        mainDisplay.textContent = subtract(initialString,secondString).toFixed(5);
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+    } else if (operatorSymbol === "+") {
+        mainDisplay.textContent = add(initialString,secondString).toFixed(5);
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+    }
+});
 
-
+// clear button
+clearBtn.addEventListener('click', () => {
+    topDisplay.textContent = "--";
+    mainDisplay.textContent = "0000";
+    initialString = 0;
+    secondString = undefined;
+    operatorSymbol = undefined;
+    operatorSelect = undefined;
+    initialNum = [];
+    secondNum = [];
+});
