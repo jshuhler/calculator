@@ -3,6 +3,8 @@ Final project of [The Odin Project](https://www.theodinproject.com/about)'s Foun
 
 [Live Preview](jshuhler.github.io/calculator)
 
+Favicon from <a href="https://www.flaticon.com/free-icons/calculator" title="calculator icons">Calculator icons created by Freepik - Flaticon</a>
+
 # Dev Notes
 - add if loops in the selecting operator and typing second number
     - if there is no initalNum, then the number entered becomes the initialNum

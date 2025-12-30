@@ -11,20 +11,9 @@ body {
     justify-content: space-between;
 }
 
-/* DISPLAYS */
-.displays {
-    background-color: hsl(160, 47%, 80%);
-    text-align: right;
-    border-radius: 4px;
-}
-
-.top-display {
-    font-size: small;
-}
-
 /* MAIN CALC BODY */
 .calc-container {
-    /* width: 30%; */
+    width: 420px;
     display: flex;
     flex-grow: 1;
     justify-content: center;
@@ -36,10 +25,11 @@ body {
 }
 
 .calc-body {
-    width: 400px;
+    /* width: 400px; */
+    /* min-height: 550px; */
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    padding: 15px;
     background-color: #4C4E52;
     border-style: solid;
     border-width: 1px;
@@ -50,27 +40,65 @@ body {
 
 .top-row, .div-row, .mult-row, .sub-row, .add-row {
     display: flex;
-    justify-content: space-around;
-    padding: 5px 0px 5px 0px;
+    justify-content: space-evenly;
+    /* align-content: space-evenly; */
+    /* padding: 5px 0px 5px 0px; */
+}
+
+/* DISPLAYS */
+.displays {
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(160, 47%, 80%);
+    text-align: right;
+    border-radius: 4px;
+    height: 85px;
+    padding: 15px 10px;
+}
+
+.top-display {
+    font-size: larger;
+}
+
+.main-display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: xx-large;
+    flex-grow: 1;
+
 }
 
 /* BUTTONS */
 button {
     font-family: "JetBrains Mono", monospace;
     border-radius: 4px;
+    cursor: pointer;
+    font-size: x-large;
+    height: 70px;
+    margin: 5px;
+}
 
-}#clear-btn {
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#clear-btn {
     background-color: #7ED9CF;
-    font-size: smaller;
+    width: 160px;
 }
 
 #delete-btn {
     background-color: #C05A6A;
-    font-size: smaller;
+    width: 160px
 }
 
 .number-btn, .operator-btn {
     background-color: #b3b3b3;
+    width: 80px;
+    height: 70px;
 }
 
 /* FOOTER */
@@ -88,6 +116,8 @@ a:hover {
 }
 
 .footer {
+    display: flex;
+    align-items: center;
     margin: 15px 0px 15px 0px;
     color: rgb(29, 29, 29);
 }
