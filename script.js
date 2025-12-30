@@ -36,6 +36,9 @@ numBtns.forEach(button => {
             initialNum.push(event.target.textContent)
             initialString = initialNum.join("");
             mainDisplay.textContent = initialString;
+        // this part isn't working, but I might be on the right track?
+        // } else if (initialString !== undefined && secondString !== undefined && operatorSymbol !== undefined) {
+        //     initialString = operation (initialString, secondString, operatorSymbol);
         } else if (operatorSymbol !== undefined) {
             secondNum.push(event.target.textContent)
             secondString = secondNum.join("");
@@ -47,39 +50,50 @@ numBtns.forEach(button => {
 // selecting operator button
 operatorBtn.forEach(button => {
     button.addEventListener('click', (event) => {
-        if (event.target.id === "div-btn") {
+        if (initialString !== undefined && secondString !== undefined && operatorSymbol !== undefined) {
+            operation(initialString, secondString, operatorSymbol);
+        } else if (event.target.id === "div-btn") {
             operatorSelect = "divide";
             operatorSymbol = "/";
+            mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         } else if (event.target.id === "mult-btn") {
             operatorSelect = "multiply";
             operatorSymbol = "*";
+            mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         } else if (event.target.id === "sub-btn") {
             operatorSelect = "subtract";
             operatorSymbol = "-";
+            mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         } else if (event.target.id === "add-btn") {
             operatorSelect = "add";
             operatorSymbol = "+";
+            mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         }
-        mainDisplay.textContent = `${initialString} ${operatorSymbol}`
+        
     });
 });
 
 // do the actual math
-equalBtn.addEventListener('click', () => {
-    if (operatorSymbol === "/") {
-        mainDisplay.textContent = divide(initialString,secondString).toFixed(5);
-        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
-    } else if (operatorSymbol === "*") {
-        mainDisplay.textContent = multiply(initialString,secondString).toFixed(5);
-        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
-    } else if (operatorSymbol === "-") {
-        mainDisplay.textContent = subtract(initialString,secondString).toFixed(5);
-        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
-    } else if (operatorSymbol === "+") {
-        mainDisplay.textContent = add(initialString,secondString).toFixed(5);
-        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+// equalBtn.addEventListener('click', () => {
+    function operation (initialString, secondString, operatorSymbol) {
+        if (operatorSymbol === "/") {
+            mainDisplay.textContent = divide(initialString,secondString).toFixed(5);
+            topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+        } else if (operatorSymbol === "*") {
+            mainDisplay.textContent = multiply(initialString,secondString).toFixed(5);
+            topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+        } else if (operatorSymbol === "-") {
+            mainDisplay.textContent = subtract(initialString,secondString).toFixed(5);
+            topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+        } else if (operatorSymbol === "+") {
+            mainDisplay.textContent = add(initialString,secondString).toFixed(5);
+            topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+        }
     }
-});
+// });
+
+// combining operator button and actual math - if the user enters initialNum, selects operator, enters secondNum, selects operator it should evaluate the function and push result to initialNum
+
 
 // clear button
 clearBtn.addEventListener('click', () => {
