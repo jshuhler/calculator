@@ -4,7 +4,6 @@ let secondNum = []; //second number typed in
 let initialString = 0;
 let secondString;
 let answer;
-let operatorSelect;
 let operatorSymbol;
 const equalBtn = document.getElementById("equal-btn"); //the equal button to run the functions
 const clearBtn = document.getElementById("clear-btn")
@@ -53,32 +52,26 @@ numBtns.forEach(button => {
 operatorBtn.forEach(button => {
     button.addEventListener('click', (event) => {
         if (initialString !== undefined && secondString !== undefined && operatorSymbol !== undefined && answer === undefined) {
-            // subsequentOperator = event.target.id;
             operation(initialString, secondString, operatorSymbol);
             initialString = answer;
             initialNum = [];
             secondNum = [];
             secondString = undefined;
-            operatorSelect = undefined
             operatorSymbol = undefined;
             answer = undefined;
         } else if (answer !== undefined) {
             operation(initialString, secondString, operatorSymbol);
         };
         if (event.target.id === "div-btn") {
-            // operatorSelect = "divide";
             operatorSymbol = "/";
             mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         } else if (event.target.id === "mult-btn") {
-            // operatorSelect = "multiply";
             operatorSymbol = "*";
             mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         } else if (event.target.id === "sub-btn") {
-            // operatorSelect = "subtract";
             operatorSymbol = "-";
             mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         } else if (event.target.id === "add-btn") {
-            // operatorSelect = "add";
             operatorSymbol = "+";
             mainDisplay.textContent = `${initialString} ${operatorSymbol}`
         };
@@ -89,16 +82,16 @@ operatorBtn.forEach(button => {
 // equalBtn.addEventListener('click', () => {
     function operation (initialString, secondString, operatorSymbol) {
         if (operatorSymbol === "/") {
-            mainDisplay.textContent = divide(initialString,secondString).toFixed(5);
+            mainDisplay.textContent = parseFloat(divide(initialString,secondString).toFixed(5));
             topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
         } else if (operatorSymbol === "*") {
-            mainDisplay.textContent = multiply(initialString,secondString).toFixed(5);
+            mainDisplay.textContent = parseFloat(multiply(initialString,secondString).toFixed(5));
             topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
         } else if (operatorSymbol === "-") {
-            mainDisplay.textContent = subtract(initialString,secondString).toFixed(5);
+            mainDisplay.textContent = parseFloat(subtract(initialString,secondString).toFixed(5));
             topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
         } else if (operatorSymbol === "+") {
-            mainDisplay.textContent = add(initialString,secondString).toFixed(5);
+            mainDisplay.textContent = parseFloat(add(initialString,secondString).toFixed(5));
             topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
         }
     }
@@ -111,7 +104,7 @@ clearBtn.addEventListener('click', () => {
     initialString = 0;
     secondString = undefined;
     operatorSymbol = undefined;
-    operatorSelect = undefined;
     initialNum = [];
     secondNum = [];
+    answer = undefined;
 });
