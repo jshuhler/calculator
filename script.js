@@ -19,7 +19,7 @@ const add = function (a, b) {
 };
 
 const subtract = function (a, b) {
-    answer = (Number(a) - Number(b));
+    answer = (a - b);
     return answer;
 };
 
@@ -53,7 +53,7 @@ operatorBtn.forEach(button => {
     button.addEventListener('click', (event) => {
         if (initialString !== undefined && secondString !== undefined && operatorSymbol !== undefined && answer === undefined) {
             operation(initialString, secondString, operatorSymbol);
-            initialString = answer;
+            initialString = parseFloat(answer.toFixed(5));
             initialNum = [];
             secondNum = [];
             secondString = undefined;
@@ -79,23 +79,21 @@ operatorBtn.forEach(button => {
 });
 
 // do the actual math
-// equalBtn.addEventListener('click', () => {
-    function operation (initialString, secondString, operatorSymbol) {
-        if (operatorSymbol === "/") {
-            mainDisplay.textContent = parseFloat(divide(initialString,secondString).toFixed(5));
-            topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
-        } else if (operatorSymbol === "*") {
-            mainDisplay.textContent = parseFloat(multiply(initialString,secondString).toFixed(5));
-            topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
-        } else if (operatorSymbol === "-") {
-            mainDisplay.textContent = parseFloat(subtract(initialString,secondString).toFixed(5));
-            topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
-        } else if (operatorSymbol === "+") {
-            mainDisplay.textContent = parseFloat(add(initialString,secondString).toFixed(5));
-            topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
-        }
+function operation (initialString, secondString, operatorSymbol) {
+    if (operatorSymbol === "/") {
+        mainDisplay.textContent = parseFloat(divide(initialString,secondString).toFixed(5));
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+    } else if (operatorSymbol === "*") {
+        mainDisplay.textContent = parseFloat(multiply(initialString,secondString).toFixed(5));
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+    } else if (operatorSymbol === "-") {
+        mainDisplay.textContent = parseFloat(subtract(initialString,secondString).toFixed(5));
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+    } else if (operatorSymbol === "+") {
+        mainDisplay.textContent = parseFloat(add(initialString,secondString).toFixed(5));
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
     }
-// });
+}
 
 // clear button
 clearBtn.addEventListener('click', () => {
@@ -108,3 +106,5 @@ clearBtn.addEventListener('click', () => {
     secondNum = [];
     answer = undefined;
 });
+
+// delete button

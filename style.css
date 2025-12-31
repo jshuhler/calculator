@@ -54,6 +54,7 @@ body {
     border-radius: 4px;
     height: 85px;
     padding: 15px 10px;
+    border-color: black;
 }
 
 .top-display {
@@ -72,11 +73,15 @@ body {
 /* BUTTONS */
 button {
     font-family: "JetBrains Mono", monospace;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: x-large;
     height: 70px;
     margin: 5px;
+}
+
+button:hover {
+    background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
 }
 
 .button-container {
