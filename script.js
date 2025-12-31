@@ -1,4 +1,4 @@
-// declaring Variables
+// variables
 let initialNum = []; //first number typed in 
 let secondNum = []; //second number typed in
 let initialString = 0;
@@ -6,13 +6,15 @@ let secondString;
 let answer;
 let operatorSymbol;
 const equalBtn = document.getElementById("equal-btn"); //the equal button to run the functions
-const clearBtn = document.getElementById("clear-btn")
+const clearBtn = document.getElementById("clear-btn");
+const deleteBtn = document.getElementById("delete-btn");
+const decimalBtn = document.getElementById("decimal-btn"); //for single decimals per number
 const operatorBtn = document.querySelectorAll(".operator-btn"); //the operator button selected
 const numBtns = document.querySelectorAll(".number-btn"); //numbers and decimal buttons
 const topDisplay = document.querySelector(".top-display"); //the top screen with smaller text
 const mainDisplay = document.querySelector(".main-display"); //container for the main screen
 
-// basic operations - could add toFixed(5) on here if I want to format the output
+// basic operations
 const add = function (a, b) {
     answer = (Number(a) + Number(b))
     return answer;
@@ -46,6 +48,19 @@ numBtns.forEach(button => {
             mainDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
         }; 
     });
+});
+
+// only allowing a single decimal per number
+decimalBtn.addEventListener('click', (event) => {
+    if (operatorSymbol === undefined && initialNum.includes(".") === false) {
+        initialNum.push(event.target.textContent);
+        initialString = initialNum.join("");
+        mainDisplay.textContent = initialString;
+    } else if (operatorSymbol !== undefined && secondNum.includes(".") === false) {
+        secondNum.push(event.target.textContent);
+        secondString = secondNum.join("");
+        mainDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
+    };
 });
 
 // selecting operator button
@@ -108,3 +123,16 @@ clearBtn.addEventListener('click', () => {
 });
 
 // delete button
+deleteBtn.addEventListener('click', () => {
+    if (operatorSymbol === undefined) {
+        initialNum.pop();
+        initialString = initialNum.join("");
+        mainDisplay.textContent = initialString;
+    } else if (operatorSymbol !== undefined) {
+        secondNum.pop();
+        secondString = secondNum.join("");
+        mainDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString}`;
+    };
+});
+
+

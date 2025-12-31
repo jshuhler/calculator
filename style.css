@@ -32,7 +32,7 @@ body {
     padding: 15px;
     background-color: #4C4E52;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     border-color: hsl(0, 0%, 0%);
     border-radius: 8px;
     box-shadow: 0 0 5px black;
@@ -55,6 +55,8 @@ body {
     height: 85px;
     padding: 15px 10px;
     border-color: black;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .top-display {
@@ -67,7 +69,6 @@ body {
     align-items: flex-end;
     font-size: xx-large;
     flex-grow: 1;
-
 }
 
 /* BUTTONS */
@@ -78,9 +79,14 @@ button {
     font-size: x-large;
     height: 70px;
     margin: 5px;
+    border: 1px solid black;
 }
 
 button:hover {
+    background-image: linear-gradient(rgb(0 0 0/10%) 0 0);
+}
+
+button:active {
     background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
 }
 
@@ -92,19 +98,19 @@ button:hover {
 
 #clear-btn {
     background-color: #7ED9CF;
-    width: 160px;
+    flex: 1 1 50%;
 }
 
 #delete-btn {
     background-color: #C05A6A;
-    width: 160px
+    flex: 1 1 50%;
 }
 
 .top-row {
     margin-top: 15px;
 }
 
-.number-btn, .operator-btn {
+.number-btn, .operator-btn, .decimal-btn {
     background-color: #b3b3b3;
     width: 80px;
     height: 70px;

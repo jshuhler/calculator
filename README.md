@@ -1,9 +1,9 @@
 # Calculator
-Final project of [The Odin Project](https://www.theodinproject.com/about)'s Foundations course. 
+Final project of [The Odin Project](https://www.theodinproject.com/about)'s Foundations course, built with Javascript, HTML, and CSS.
 
 [Live Preview](jshuhler.github.io/calculator)
 
-<a href="https://www.flaticon.com/authors/arkinasi" title="calculator icons">Calculator icons created by Arkinasi - Flaticon</a>
+[Favicon icon created by Arkinasi - Flaticon](https://www.flaticon.com/authors/arkinasi)
 
 # Dev Notes
 - [x] add if loops in the selecting operator and typing second number
@@ -17,13 +17,14 @@ Final project of [The Odin Project](https://www.theodinproject.com/about)'s Foun
     - [x] push the string of the equation entered to the top display and put the answer on the main display
 - [x] clear button
     - [x] reset the variables back to undefined
-- [ ] delete button
-    - [ ] turn the string back to an array, remove the last element of the array, join it back to a string, display that value in the display? 
-    - [ ] what if it's the secondNum instead of the initialNum?
-        - [ ] if statement to check if there is an operator, if so, do all of that on the secondNum, otherwise do it on the initialNum?
-- [ ] clean up
-    - [ ] don't allow more than one `.` per Num
+- [x] delete button
+    - [x] turn the string back to an array, remove the last element of the array, join it back to a string, display that value in the display? 
+    - [x] what if it's the secondNum instead of the initialNum?
+        - [x] if statement to check if there is an operator, if so, do all of that on the secondNum, otherwise do it on the initialNum?
+- [x] clean up
+    - [x] don't allow more than one `.` per Num
         - listener if it is pressed it turns the button off until and operator, equal sign, delete, or clear is selected?
+        - listener to change value of a variable. when `.` is clicked, it sets decimal to true, if decimal variable is equal to true, the button is disabled. clicking any operator btn changes the decimal variable to false, which enables the button. 
     - [x] entering initialNum, selecting an operator, entering secondNum, then selecting an operator should execute the fucntion and then store that Num as the new initialNum
         - not sure if the last part about storing the outcome as the new initialNUm is needed, but look into it for extra credit
     - [x] round all returned numbers to 5 decimals 
