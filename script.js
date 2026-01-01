@@ -95,7 +95,11 @@ operatorBtn.forEach(button => {
 
 // do the actual math
 function operation (initialString, secondString, operatorSymbol) {
-    if (operatorSymbol === "/") {
+    if (operatorSymbol === "/" && secondString === "0") {
+        answer = 0;
+        mainDisplay.textContent = `Try again.`;
+        topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
+    } else if (operatorSymbol === "/" && secondString !== "0") {
         mainDisplay.textContent = parseFloat(divide(initialString,secondString).toFixed(5));
         topDisplay.textContent = `${initialString} ${operatorSymbol} ${secondString} =`;
     } else if (operatorSymbol === "*") {
